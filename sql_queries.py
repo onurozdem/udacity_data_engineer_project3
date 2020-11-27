@@ -107,7 +107,7 @@ time_table_create = ("""CREATE TABLE times (
 # STAGING TABLES
 
 staging_events_copy = ("""COPY staging_events FROM {}
-    iam_role  '{}'
+    iam_role  {}
     FORMAT as JSON {}
     region 'us-west-2'
 """).format(config.get("S3", "LOG_DATA"),
@@ -115,7 +115,7 @@ staging_events_copy = ("""COPY staging_events FROM {}
             config.get("S3", "LOG_JSONPATH"))
 
 staging_songs_copy = ("""COPY staging_songs FROM {}
-    iam_role  '{}'
+    iam_role  {}
     JSON 'auto'
     region 'us-west-2'
 """).format(config.get("S3", "SONG_DATA"), config.get("IAM_ROLE", "ARN"))
